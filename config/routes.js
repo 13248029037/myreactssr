@@ -14,7 +14,7 @@ const routes = [
         path: '/home',
         component: Loadable({
             loading:Loading,
-            loader: () => import(`../container/Home.js`),
+            loader: () => import(/* webpackChunkName:"home" */'../container/Home.js'),
         }),
         c:Home
     },
@@ -24,7 +24,7 @@ const routes = [
         path: '/car',
         component: Loadable({
             loading:Loading,
-            loader: () => import(`../container/Car.js`),
+            loader: () => import(/* webpackChunkName:"car" */'../container/Car.js'),
         }),
         c:Car
     },
@@ -34,7 +34,7 @@ const routes = [
         path: '/index',
         component: Loadable({
             loading:Loading,
-            loader: () => import(`../container/Index.js`),
+            loader: () => import(/* webpackChunkName:"index" */'../container/Index.js'),
         }),
         c:Index
     }

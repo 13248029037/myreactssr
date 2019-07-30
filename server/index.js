@@ -1,3 +1,8 @@
+// import assethook from 'asset-require-hook';
+// assethook({
+//     extensions: ['png', 'jpg','jpeg']
+// });
+import csshook from 'css-modules-require-hook';
 import express from 'express'
 import ReactDOMServer from 'react-dom/server';
 import React from 'react'
@@ -12,7 +17,11 @@ import createStore from '../store/index'
 import { Provider } from 'mobx-react'
 import asyncBootstrap from 'react-async-bootstrapper'
 import routes from '../config/routes'
+import '../lib/iconfont.css';
+import '../lib/init.css';
 // store.appStore.state.tag = 'xiaoshulin'
+// 处理图片
+
 const prepareStore = (store) => {
     const keyArr = Object.keys(store);
     const output = {};
@@ -28,11 +37,11 @@ app.use((req, res, next) => {
         next();
         return;
     }
-    let store = new createStore ()
+    let store = new createStore()
     let ff = null
     let f = function () {
         let AppString = ReactDOMServer.renderToString(<Provider {...store}><ServerApp url={req.url} /></Provider>)
-        console.info(AppString,'AppStringAppString')
+        console.info(AppString, 'AppStringAppString')
         let html = fs.readFileSync('./dist/index.html').toString();
         html = html.replace(/<!--app-->/, AppString)
         html = html.replace(/window.__INITIAL_STATE__/, 'window.__INITIAL_STATE__=' + JSON.stringify(prepareStore(store)))
@@ -47,19 +56,19 @@ app.use((req, res, next) => {
     })
     if (ff) {
         ff(store).then(data => {
-           f()
+            f()
         }).catch(err => {
             res.end('error')
         })
     } else {
-       f()
+        f()
     }
 
 })
 app.use('/static', express.static(staticPath))
 
 Loadable.preloadAll().then(() => {
-    app.listen(3009, () => {
+    app.listen(3000, () => {
         console.log('Running on http://localhost:3000/');
     });
 });

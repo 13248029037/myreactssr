@@ -11,7 +11,7 @@ module.exports = {
         path: path.join(__dirname, './dist'),
         filename: "js/[name].[hash].js",
 		chunkFilename: "js/[name].[chunkhash].js",
-        publicPath: '/static'
+        publicPath: '/static/'
     },
     module: {
         rules: [
@@ -19,7 +19,34 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
-            }
+            },
+            {
+				test: /\.less$/,
+				exclude: /node_modules/,
+				use: [
+					require.resolve("style-loader"),
+					require.resolve("css-loader"),
+					require.resolve("less-loader")
+				],
+			},
+            {
+				test: /\.css$/,
+				exclude: /node_moduels/,
+				use: [
+					"style-loader","css-loader"
+				]
+			},
+            {
+				test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
+				loader: "url-loader",
+				options: {
+					limit: 8192
+				}
+            },
+            {
+				test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+				loader: "file-loader",
+			}
         ]
     },
     resolve: {
@@ -47,6 +74,27 @@ module.exports = {
         open:true,
         historyApiFallback: true,
     },
-    // optimization: {},
-    devtool: '#eval-source-map'
+    optimization: {
+        splitChunks: {
+            chunks:'async',
+            minChunks:1,
+			cacheGroups: { // 单独提取JS文件引入html
+				// common: {
+				// 	name: "common",
+				// 	chunks: "initial",
+				// 	test: /\.jsx?$/,
+				// 	minSize: 250000,
+				// 	maxSize: 300000,
+				// 	priority: 20
+				// },
+				styles: {
+					name: 'styles',
+					test: /\.css$/,
+					chunks: 'all',
+					enforce: true
+				  }
+			}
+		}
+    },
+    devtool: 'source-map'
 }

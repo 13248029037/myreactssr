@@ -1,0 +1,87 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.ant-menu-vertical .ant-menu-item,.ant-menu-inline .ant-menu-item{
+    margin-top:0px !important;
+    margin-bottom:0px !important;
+}
+.ant-breadcrumb-separator {
+    
+    color:#eee;
+    font-size:20px;
+}
+.ant-spin-lg .ant-spin-dot {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
+body{
+    background-color:#f0f2f5;
+    color:#333 !important;
+}
+/* html {
+    min-width: 1024px;
+    min-height: 768px;
+} */
+.ant-table-header{
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+}
+.ant-table-fixed-header .ant-table-scroll .ant-table-header {
+    overflow:auto !important;
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+    opacity: 0.9999;
+}
+.ant-table-body{
+    overflow:auto !important;
+}
+.ant-table-pagination.ant-pagination {
+    margin: 16px 0;
+    float: right;
+    margin-right: 20px !important;
+}
