@@ -5,13 +5,13 @@ const AssetsPlugin = require('assets-webpack-plugin') ;
 module.exports = {
     mode: 'development',
     entry: {
-        index: path.join(__dirname, './client/index.js')
+        index: path.join(__dirname, './client/client-entry.js')
     },
     output: {
         path: path.join(__dirname, './dist'),
         filename: "js/[name].[hash].js",
 		chunkFilename: "js/[name].[chunkhash].js",
-        publicPath: '/static/'
+        publicPath: '/'
     },
     module: {
         rules: [
